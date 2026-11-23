@@ -1,0 +1,29 @@
+while True:
+    try:
+        start = int(input("Enter starting number: "))
+        end = int(input("Enter ending number: "))
+        if start > end:
+            print("Starting number should not be greater than ending number.")
+            continue
+        break
+    except ValueError:
+        print("Please enter valid integers.")
+
+primes = []
+
+for num in range(start, end + 1):
+    if num < 2:
+        continue
+
+    is_prime = True
+    for divisor in range(2, int(num ** 0.5) + 1):
+        if num % divisor == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        primes.append(num)
+
+print("\nPrime numbers in range:", primes if primes else "None")
+print("Total prime numbers found:", len(primes))
+print("Sum of prime numbers:", sum(primes))
