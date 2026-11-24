@@ -1,0 +1,43 @@
+total_revenue = 0.0
+customer_number = 0
+
+while True:
+    try:
+        units = float(input("\nEnter units consumed (-1 to stop): "))
+    except ValueError:
+        print("Invalid input. Please enter a numeric value.")
+        continue
+
+    if units == -1:
+        break
+
+    if units < 0:
+        print("Error: Units consumed cannot be negative.")
+        continue
+
+    customer_number += 1
+    bill = 0.0
+
+    # First 100 units @ Rs. 10
+    first_tier = min(units, 100)
+    bill += first_tier * 10
+
+    # Next 100 units (101-200) @ Rs. 15
+    if units > 100:
+        second_tier = min(units - 100, 100)
+        bill += second_tier * 15
+
+    # Next 100 units (201-300) @ Rs. 20
+    if units > 200:
+        third_tier = min(units - 200, 100)
+        bill += third_tier * 20
+
+    # Units above 300 @ Rs. 25
+    if units > 300:
+        fourth_tier = units - 300
+        bill += fourth_tier * 25
+
+    total_revenue += bill
+    print(f"Customer {customer_number} Bill: Rs. {bill:.2f}")
+
+print(f"\nTotal revenue collected: Rs. {total_revenue:.2f}")
