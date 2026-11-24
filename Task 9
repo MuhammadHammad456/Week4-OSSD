@@ -1,0 +1,29 @@
+while True:
+    try:
+        terms = int(input("How many Fibonacci terms would you like to generate? "))
+        if terms >= 1:
+            break
+        print("Error: Number of terms must be at least 1.")
+    except ValueError:
+        print("Invalid input. Please enter a valid integer.")
+
+sequence = []
+a, b = 0, 1
+
+for _ in range(terms):
+    sequence.append(a)
+    a, b = b, a + b
+
+even_count = 0
+odd_count = 0
+
+for num in sequence:
+    if num % 2 == 0:
+        even_count += 1
+    else:
+        odd_count += 1
+
+print("\nSequence:", " ".join(str(x) for x in sequence))
+print(f"Sum: {sum(sequence)}")
+print(f"Even terms: {even_count}")
+print(f"Odd terms: {odd_count}")
