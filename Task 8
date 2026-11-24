@@ -1,0 +1,29 @@
+stock = 100
+total_sold = 0
+
+while stock > 0:
+    print(f"\nAvailable stock: {stock}")
+    try:
+        qty = int(input("Enter quantity sold (-1 to stop): "))
+    except ValueError:
+        print("Invalid input. Please enter an integer.")
+        continue
+
+    if qty == -1:
+        break
+
+    if qty <= 0:
+        print("Error: Quantity sold must be greater than zero.")
+        continue
+
+    if qty > stock:
+        print("Error: Requested quantity exceeds available stock.")
+        continue
+
+    stock -= qty
+    total_sold += qty
+    print(f"Sale recorded: {qty} units sold.")
+
+print("\n--- Inventory Summary ---")
+print(f"Total units sold: {total_sold}")
+print(f"Remaining stock: {stock}")
