@@ -1,0 +1,24 @@
+stored_username = "admin"
+stored_password = "Password123"
+max_attempts = 3
+attempts_used = 0
+
+while attempts_used < max_attempts:
+    username = input("Enter username: ").strip()
+    password = input("Enter password: ").strip()
+
+    if not username or not password:
+        print("Error: Username and password cannot be empty.")
+        continue
+
+    attempts_used += 1
+
+    if username == stored_username and password == stored_password:
+        print("Login successful! Welcome to the university portal.")
+        break
+
+    remaining = max_attempts - attempts_used
+    if remaining > 0:
+        print(f"Invalid credentials. Attempts remaining: {remaining}")
+    else:
+        print("Account locked due to too many failed login attempts.")
