@@ -18,21 +18,17 @@ while True:
     customer_number += 1
     bill = 0.0
 
-    # First 100 units @ Rs. 10
     first_tier = min(units, 100)
     bill += first_tier * 10
 
-    # Next 100 units (101-200) @ Rs. 15
     if units > 100:
         second_tier = min(units - 100, 100)
         bill += second_tier * 15
 
-    # Next 100 units (201-300) @ Rs. 20
     if units > 200:
         third_tier = min(units - 200, 100)
         bill += third_tier * 20
 
-    # Units above 300 @ Rs. 25
     if units > 300:
         fourth_tier = units - 300
         bill += fourth_tier * 25
