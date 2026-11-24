@@ -1,0 +1,41 @@
+positive_numbers = []
+even_count = 0
+odd_count = 0
+
+print("Enter integers to analyze. Enter 0 to stop.")
+
+while True:
+    try:
+        num = int(input("Enter an integer: "))
+    except ValueError:
+        print("Invalid input. Please enter an integer.")
+        continue
+
+    if num == 0:
+        break
+
+    if num < 0:
+        continue
+
+    positive_numbers.append(num)
+
+    if num % 2 == 0:
+        even_count += 1
+        print(f"{num} is Even.")
+    else:
+        odd_count += 1
+        print(f"{num} is Odd.")
+
+print("\n--- Analysis Results ---")
+if not positive_numbers:
+    print("No positive numbers were entered.")
+else:
+    total_sum = sum(positive_numbers)
+    average = total_sum / len(positive_numbers)
+    largest = max(positive_numbers)
+
+    print(f"Total even numbers: {even_count}")
+    print(f"Total odd numbers: {odd_count}")
+    print(f"Largest positive number: {largest}")
+    print(f"Sum of positive numbers: {total_sum}")
+    print(f"Average of positive numbers: {average:.2f}")
